@@ -20,3 +20,18 @@ e.g.
     grapes.show()
     
 self.cache
+
+magic methods
+are defined internally in python, but can be overwritten. E.g. __init__() most common magic methodd
+
+class Person:
+  def __init__(self, name, salary):
+    self.name = name
+    self.salary = salary
+  #overriding magic method
+  def __gt__(self, other):
+    return self.salary > other.salary
+
+obj1 = Person('John', 4500)
+obj2 = Person('Natasha', 6000)
+print(obj1.name, 'earns more than', obj2.name, '-', obj1 > obj2)
