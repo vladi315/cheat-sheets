@@ -15,12 +15,67 @@ Alternatives for multiple files
 Afterwards run 
 `./myprogram`
 
-							
+## import header and helper functions
+
+use following three files: 
+1. hpp header file *numbers.hpp*
+```c
+// numbers.hpp
+#ifndef HEADERVAR    
+// To make sure you don't declare the function more than once by including the header multiple times.
+#define HEADERVAR
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void printNumbers(vector<int> numbers);
+vector<int> addNumbers(vector<int> &numbers);
+#endif
+```
+
+2. helper function *numbers-functions.cpp*
+```c
+// numbers-functions.cpp
+#include "numbers-header.hpp"
+
+void printNumbers(vector<int> numbers){
+    if (numbers.size() == 0)
+        cout << "[] - the list is empty" << endl;
+    else {
+        cout << "[ ";
+        for (auto num: numbers)
+            cout << num << " ";
+        cout << "]" << endl;
+    }
+}
+vector<int> addNumbers(vector<int> &numbers){
+    int num_to_add {};
+    cout << "Enter an integer to add to the list: ";
+    cin >> num_to_add;
+    numbers.push_back(num_to_add);
+    cout << num_to_add << " added" << endl;
+    return numbers;
+```
+
+3. include numbers.hpp in main file, but not numbers-functions.cpp! Compile and run main.cpp and numbers-functions.cpp, the linker will link the compiled binary files. 
+```c
+#include "numbers-header.h"
+
+int main() {
+    printNumbers(numbers);
+    numbers = addNumbers(numbers);
+}
+```
+
+
 ## Coding 
 safe way of variable initialisation	
 `int catch_error{"abc"}`
 initialize local static variable (retains the value over multiple function calls (like a global variable, but on a local scope)
 `static int i{5000};`
+
 
 ## input and output
 import for std input/output 	
