@@ -21,9 +21,11 @@ use following three files:
 1. hpp header file *numbers.hpp*
 ```c
 // numbers.hpp
-#ifndef HEADERVAR    
+#pragma once  
 // To make sure you don't declare the function more than once by including the header multiple times.
-#define HEADERVAR
+// alternatively use 
+    // ifndef HEADERVAR   
+    // #define HEADERVAR
 
 #include <iostream>
 #include <vector>
@@ -32,7 +34,7 @@ using namespace std;
 
 void printNumbers(vector<int> numbers);
 vector<int> addNumbers(vector<int> &numbers);
-#endif
+    // #endif
 ```
 
 2. helper function *numbers-functions.cpp*
