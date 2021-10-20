@@ -79,13 +79,13 @@ initialize local static variable (retains the value over multiple function calls
 dynamic memory allocation and deallocation 
 ```c
     size_t size{0};
+    double *temp_ptr {nullptr};
     cout << "How much memory to allocate dynamically? ";
     cin >> size;
     
     temp_ptr = new double[size];    // allocate the storage on the heap
     cout << temp_ptr << endl;       // use it
     delete [] temp_ptr;             // release it
-    
 ```
 
 ## input and output
