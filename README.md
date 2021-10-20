@@ -1,2 +1,2 @@
-# learning_documentation
+# Cheat Sheets
 A collection of my personal cheat sheets
