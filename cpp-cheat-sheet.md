@@ -103,6 +103,13 @@ std output
 std input    			
 `std::cin >> favorite_number;`
 
+string declaration in cpp
+```c
+#include <string> // add `using namespace std;` if necessary
+string test = "Some text";
+cout << test << endl;
+```
+
 ## compound datatypes
 
 create an 1d-**array** --> fixed size	
