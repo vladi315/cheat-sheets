@@ -16,7 +16,7 @@ Alternatives for multiple files
 `g++ *.cpp -o compiled_file`
 
 Afterwards run 
-`./myprogram`
+`./compiled_file`
 
 ## import header and helper functions
 
