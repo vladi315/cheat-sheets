@@ -10,8 +10,11 @@ g++ -Wall -std=c++14 textfile.cpp
 //	textfile.cpp: set output file
 ```
 Alternatives for multiple files
-`g++ -Wall helloworld-helper.cpp helloworld.cpp -o myprogram `
-`g++ -c *.cpp -o myprogram`
+
+`g++ -Wall helloworld-helper.cpp helloworld.cpp -o compiled_file`
+
+`g++ *.cpp -o compiled_file`
+
 Afterwards run 
 `./myprogram`
 
