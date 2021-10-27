@@ -131,6 +131,18 @@ dynamic memory allocation and deallocation
     cout << temp_ptr << endl;       // use it
     delete [] temp_ptr;             // release it
 ```
+## Object-oriented programming
+
+Inheritence: models a "is a" relationship, e.g. student "is a" person. 
+Composition: models a "has a" relationship, e.g. person "has an" account
+
+Rule of thumb: Prefer modelling the system with composition over inheritence, because inheritence adds more complexity. 
+
+Use public inheritence to model is-a relationships --> most common
+Use private or protected inheritance to model has-a relationships --> not covered
+
+Only use inheritence if it is appropriate!
+
 
 ## input and output
 import for std input/output 	
@@ -150,6 +162,14 @@ string declaration in cpp
 #include <string> // add `using namespace std;` if necessary
 string test = "Some text";
 cout << test << endl;
+```
+To output objects of user-defined classes, use operator overloading for that class (in its .cpp). E.g.:
+
+```c
+std::ostream &operator<<(std::ostream &os, const Account &account) {
+    os <<  "Account balance: " << account.balance;
+    return os;
+}
 ```
 
 ## compound datatypes
