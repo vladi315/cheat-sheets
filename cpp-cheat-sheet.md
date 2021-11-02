@@ -131,6 +131,86 @@ dynamic memory allocation and deallocation
     cout << temp_ptr << endl;       // use it
     delete [] temp_ptr;             // release it
 ```
+
+**for loop** by value:
+```c
+for (const auto num: numbers) // &num to pass by reference
+    std::cout << num << std::endl;
+}
+```
+
+for loop by reference:
+```c
+for (const auto &num: numbers) // &num to pass by reference
+    std::cout << num << std::endl;
+}
+```
+####Raw pointers
+
+Always initialize them to avoid wild pointers!
+
+```c
+int val{3};
+int *ptr = &val;
+// alternative with dynamic memory allocation
+int *ptr = new int{3}
+// don't forget to destroy dynamically allocated memory if not needed anymore!
+delete ptr
+```
+
+####Smart pointers
+
+Avoid *new* keywords!
+`#include <memory>` to use smart pointers
+
+#####Unique Pointers
+
+Use as default smart pointer.
+
+They do not allow two unique pointers to point to the same memory. → No copying possible → move instead of assignment
+
+E.g. initialization and move semantics:
+```c
+  std::unique_ptr<Test> t3;
+  t3 = std::move(t1);
+```
+
+Initialize with make_unique
+`  auto song = std::make_unique<Test>("abba", "acdc");`
+
+E.g. unique pointer pointing to Base class, initialized with adress to a Derived class object (constructor arguments in parenthesis). 
+
+`std::unique_ptr<Base> a1 = std::make_unique<Derived>("Moe", 5000);`
+
+Pass to function 
+```c
+auto int_ptr = std::make_unique<int>();
+func(*int_ptr);
+void func(int &i) return i++;
+```
+
+#####Shared Pointers
+Use if more complex memory management needed than unique pointers allow.
+
+Several pointers pointing to the same object possible. They achieve it by introducing a pointer count. The pointer is deallocated only if no pointers are pointing to that memory anymore. → Can also be copied → More similar to raw pointes
+
+*ptr.use_count()* can be used to determine how many shared pointers point to the object. 
+
+```c
+
+// std::shared_ptr<int> p1 {new int {100} }; Unefficient!
+// More efficient initialization:
+std::shared_ptr<Base> ptr = std::make_shared<Base>(100);
+std::cout << "count:"<< ptr.use_count (); 	
+ptr.reset();	// decrement the use_count; ptr is nulled out
+```
+
+#####Weak Pointers
+* Few use cases (e.g. avoid cyclic reference that prohibits deletion --> solution: make one of the pointers a weak pointer)
+* Always created from a shared pointer.
+* Points to object on the heap.
+* Does not participate in owning relationship → Doesnt change *use_count()*
+
 ## Object-oriented programming
 
 Inheritence: models a "is a" relationship, e.g. student "is a" person. 
@@ -202,4 +282,12 @@ vector <vector<int>> movie_ratings
     {1, 2, 4, 4},
     {1, 3, 4, 5}
 };
+```
+
+Loop through all vector elements: 
+```c
+std::vector<int> numbers{1,2,3}
+for (const auto num: numbers) // &num to pass by reference
+    std::cout << num << std::endl;
+}
 ```
