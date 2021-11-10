@@ -3,6 +3,9 @@ search all files for a search term
 `find . -print | grep -i searchterm123`
 
 list all processes
+`ps -a`
+
+search for a process
 `ps -ef | grep -i rosmaster`
 
 
