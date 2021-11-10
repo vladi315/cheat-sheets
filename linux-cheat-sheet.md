@@ -1,5 +1,11 @@
 ##Linux
+search all files for a search term
 `find . -print | grep -i searchterm123`
+
+list all processes
+`ps -ef | grep -i rosmaster`
+
+
 check disk usage (alternatively use gnome-disks)
 `df -h `
 
@@ -8,6 +14,37 @@ find string "foo" in large file input.txt
 
 Monitor memory usage
 `htop`
+
+Update all packages
+```
+sudo apt update
+apt list --upgradable
+sudo apt upgrade
+```
+check available packages for ubuntu under: 
+https://packages.ubuntu.com/
+
+
+Resolve package installation conflicts with
+`sudo aptitude install packagename`
+
+change access rights for group or user 
+(r: 400, w: 200, x: 100), group (r: 40, w: 20, x: 10) and others (r: 4, w: 2, x: 1) --> 444 gives read rights to everyone --> 555 gives read and execute permissions to everyone
+```
+chmod u+w filename
+chmod g+w filename
+chmod g-wx filename
+chmod o+w filename
+chmod o-rwx foldername
+
+chmod 444 header
+```
+
+change owner
+`chown bin filename`
+
+change group
+`chgrp bin filename`
 
 ## text editing
 copy content of one file to another file
