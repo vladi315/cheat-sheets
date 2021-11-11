@@ -28,8 +28,17 @@ check available packages for ubuntu under:
 https://packages.ubuntu.com/
 
 
-Resolve package installation conflicts with
+Resolve package installation conflicts 
+with dist-upgrade (deletes non-important packages intellegently to complete the upgrade)
+`sudo apt dist-upgrade` 
+or
 `sudo aptitude install packagename`
+
+Remove package and its (otherwise unused) dependencies
+`sudo apt autoremove packagename`
+
+Remove package with all global (i.e. systemwide) configuration files
+`sudo apt --purge autoremove packagename`
 
 change access rights for group or user 
 (r: 400, w: 200, x: 100), group (r: 40, w: 20, x: 10) and others (r: 4, w: 2, x: 1) --> 444 gives read rights to everyone --> 555 gives read and execute permissions to everyone
